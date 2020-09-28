@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AlunoCurso.Models.AlunoModel>
+
+@{
+    ViewBag.Title = "Listar Cursos";
+}
+
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Listagem de Alunos</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+
+                            @*Datatable*@
+
+                            <table class="table" id="sisDataTable">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.Nome)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.Telefone)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.Email)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.Sexo)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.Curso.Curso)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Nome)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Telefone)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Email)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Sexo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Curso.Curso)
+                                                </td>
+                                                <td>
+
+                                                    @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                                                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id })
+                                                    @Html.ActionLink("Apagar", "Delete", new { id = item.Id })
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+

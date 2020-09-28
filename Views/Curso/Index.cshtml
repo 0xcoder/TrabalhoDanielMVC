@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AlunoCurso.Models.CursoModel>
+
+@{
+    ViewBag.Title = "Listar Cursos";
+}
+
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Listagem de Cursos</h4>
+                       
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+
+                            @*Datatable*@
+
+                            <table class="table" id="sisDataTable">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.Curso)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.CH)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.Periodo)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.QDisciplinas)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.Status)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Curso)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CH)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Periodo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.QDisciplinas)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Status)
+                                                </td>
+                                                <td>
+
+                                                    @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                                                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id })
+                                                    @Html.ActionLink("Apagar", "Delete", new { id = item.Id })
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
